@@ -8,8 +8,9 @@
 // I AM NOT DONE
 
 fn main() {
-    let cat = ("Furry McFurson", 3.5);
-    let /* your pattern here */ = cat;
-
+    let s :&str="Furry McFurson";
+    let cat = (s, 3.5);
+    let /* your pattern here */(name,age) = cat;
+    println!("{}",cat.0);
     println!("{} is {} years old.", name, age);
 }
