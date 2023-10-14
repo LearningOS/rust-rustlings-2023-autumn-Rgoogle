@@ -19,7 +19,29 @@
 // - The output element is going to be a Vector of strings.
 //
 // No hints this time!
+/*
+ match command {
+                Command::Uppercase => {
+                    output.push(string.to_uppercase());
+                }
+                Command::Trim => {
+                    output.push(string.trim().to_string());
+                }
+                Command::Append(x) => {
+                    match x {
+                        1=>{
 
+                            output.push(string.to_owned().add("bar"));
+                        }
+                        _=>{
+                            output.push(string.repeat(*x+1));
+                        }
+                    }
+
+                }
+            }
+
+*/
 // I AM NOT DONE
 
 pub enum Command {
@@ -29,14 +51,30 @@ pub enum Command {
 }
 
 mod my_module {
+    use std::ops::Add;
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
+
+            match command {
+                Command::Uppercase => {
+                    output.push(string.to_uppercase());
+                }
+                Command::Trim => {
+                    output.push(string.trim().to_string());
+                }
+                Command::Append(x) => {
+                    output.push(match x {
+                        1 => string.to_owned().add("bar"),
+                        _ => string.repeat(*x + 1),
+                    });
+                }
+            }
         }
         output
     }
@@ -45,7 +83,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]
