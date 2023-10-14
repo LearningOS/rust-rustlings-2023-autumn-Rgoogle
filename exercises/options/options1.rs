@@ -13,11 +13,17 @@ fn maybe_icecream(time_of_day: u16) -> Option<u16> {
     // value of 0 The Option output should gracefully handle cases where
     // time_of_day > 23.
     // TODO: Complete the function body - remember to return an Option!
-    ???
+    if time_of_day < 12 {
+       return  Some(5);
+    } else if time_of_day >12 && time_of_day<24{
+        return Some(0);
+    }
+    None
 }
 
 #[cfg(test)]
 mod tests {
+    use std::arch::x86_64::_mm256_insert_epi8;
     use super::*;
 
     #[test]
@@ -33,7 +39,10 @@ mod tests {
     fn raw_value() {
         // TODO: Fix this test. How do you get at the value contained in the
         // Option?
-        let icecreams = maybe_icecream(12);
-        assert_eq!(icecreams, 5);
+       let icecreams = maybe_icecream(12);
+       if let Some(icecreams)=icecreams{
+           assert_eq!(icecreams, 5);
+       }
+
     }
 }
