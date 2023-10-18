@@ -29,7 +29,7 @@ fn char_counter<T>(arg: T) -> usize
 // TODO: Add the appropriate trait bound.
 
 fn num_sq<T>(arg: &mut T)
-    where T: AsMut<u32> + AsRef<u32>
+    where T: AsMut<u32>
 {
     // TODO: Implement the function body.
     *arg.as_mut() = *arg.as_mut() * *arg.as_mut();
